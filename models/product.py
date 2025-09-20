@@ -7,7 +7,8 @@ class Product(db.Model):
     description = db.Column(db.String(500))
     image_url = db.Column(db.String(255))
     brand = db.Column(db.String(100))
-    category = db.Column(db.String(100))  # running, walking, soccer, basketball, sneakers, sandals
+    category = db.Column(db.String(100))  # shoes, apparel, accessories
+    sports = db.Column(db.String(100))  # running, walking, soccer, basketball, sneakers, sandals
 
     cart_items = db.relationship('CartItem', backref='product', lazy=True)    # relasi ke CartItem, satu product bisa ada di banyak cart (akses: product.cart_items/cart_item.product)
     order_items = db.relationship('OrderItem', backref='product', lazy=True)  # relasi ke OrderItem, satu product bisa ada di banyak order (akses: product.order_items/order_item.product)
