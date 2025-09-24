@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{% block title %}Checkout – Velora{% endblock %}
+{% block content %}
+<h2 class="font-display text-3xl mb-4">Checkout</h2>
+{% if not items %}
+  <div class="text-slate-300/80">Keranjang kosong.</div>
+{% else %}
+<div class="grid md:grid-cols-3 gap-6">
+  <form method="post" class="md:col-span-2 space-y-3 rounded-2xl p-4 border border-[var(--soft)] bg-[var(--card)]">
+    <input class="px-4 py-3 rounded-xl border border-[var(--soft)] bg-[var(--card)] text-[var(--txt)] w-full" type="text" name="name" placeholder="Nama lengkap" required>
+    <input class="px-4 py-3 rounded-xl border border-[var(--soft)] bg-[var(--card)] text-[var(--txt)] w-full" type="email" name="email" placeholder="Email" required>
+    <textarea class="px-4 py-3 rounded-xl border border-[var(--soft)] bg-[var(--card)] text-[var(--txt)] w-full" name="address" placeholder="Alamat lengkap" rows="4" required></textarea>
+    <textarea class="px-4 py-3 rounded-xl border border-[var(--soft)] bg-[var(--card)] text-[var(--txt)] w-full" name="note" placeholder="Catatan (opsional)" rows="3"></textarea>
+    <button class="px-5 py-3 rounded-xl bg-[var(--pri)] hover:opacity-90">Buat Pesanan</button>
+  </form>
+  <aside class="space-y-3">
+    <div class="rounded-2xl p-4 border border-[var(--soft)] bg-[var(--card)]">
+      <h3 class="font-semibold mb-2">Ringkasan Item</h3>
+      <ul class="space-y-2 text-sm">
+        {% for it in items %}
+          <li class="flex justify-between"><span>{{ it.product.name }}</span><span>× {{ it.qty }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </aside>
+</div>
+{% endif %}
+{% endblock %}

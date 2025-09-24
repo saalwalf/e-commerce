@@ -1,0 +1,13 @@
+
+{% extends 'base.html' %}
+{% block title %}Produk – Velora{% endblock %}
+{% block content %}
+<form class="grid md:grid-cols-6 gap-3 mb-6">
+  <input class="md:col-span-2 px-4 py-2 rounded-xl border border-[var(--soft)] bg-[var(--card)] text-[var(--txt)]" type="search" name="q" value="{{ q }}" placeholder="Cari nama/desk...">
+  <select class="px-3 py-2 rounded-xl border border-[var(--soft)] bg-[var(--card)]" name="brand"><option value="">Brand</option>{% for b in brands %}<option value="{{ b }}" {{ 'selected' if brand==b else '' }}>{{ b }}</option>{% endfor %}</select>
+  <select class="px-3 py-2 rounded-xl border border-[var(--soft)] bg-[var(--card)]" name="category"><option value="">Kategori</option>{% for c in categories %}<option value="{{ c }}" {{ 'selected' if category==c else '' }}>{{ c }}</option>{% endfor %}</select>
+  <select class="px-3 py-2 rounded-xl border border-[var(--soft)] bg-[var(--card)]" name="type"><option value="">Tipe</option>{% for t in types %}<option value="{{ t }}" {{ 'selected' if ptype==t else '' }}>{{ t }}</option>{% endfor %}</select>
+  <button class="px-4 py-2 rounded-xl bg-[var(--pri)] hover:opacity-90">Filter</button>
+</form>
+{% include 'products/_grid.html' with context %}
+{% endblock %}

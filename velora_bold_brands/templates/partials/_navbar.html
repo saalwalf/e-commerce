@@ -1,0 +1,16 @@
+
+<header class="sticky top-0 z-40 backdrop-blur bg-[color-mix(in_hsl,var(--bg),transparent 40%)] border-b border-[var(--soft)]">
+  <div class="container mx-auto px-4">
+    <div class="flex items-center gap-4 py-3">
+      <a href="{{ url_for('shop.index') }}" class="font-display text-2xl tracking-tight"><span class="text-[var(--pri)]">V</span>ELORA</a>
+      <nav class="ml-6 hidden md:flex items-center gap-6 text-sm">
+        {% for item in NAV %}<a class="hover:text-[var(--sec)]" href="{{ url_for(item.endpoint) }}">{{ item.name }}</a>{% endfor %}
+      </nav>
+      <form class="ml-auto hidden md:flex items-center gap-2" action="{{ url_for('shop.products_list') }}">
+        <input class="px-3 py-2 rounded-xl border border-[var(--soft)] bg-[var(--card)] text-[var(--txt)] w-64 placeholder:text-slate-400" type="search" name="q" placeholder="Cari produk...">
+        <button class="px-3 py-2 rounded-xl bg-[var(--pri)] hover:opacity-90">Cari</button>
+      </form>
+      <a href="{{ url_for('shop.cart_page') }}" class="relative ml-4 inline-flex items-center gap-1 px-3 py-2 rounded-xl border border-[var(--soft)] hover:border-[var(--sec)]">🛒 <span class="text-sm">Cart</span></a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,25 @@
+
+{% if items %}
+<div class="mt-4 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  {% for p in items %}
+  <div class="group rounded-2xl overflow-hidden bg-[var(--card)] border border-[var(--soft)]">
+    <div class="relative">
+      <img src="{{ p.image_url }}" alt="{{ p.name }}" class="h-56 w-full object-cover group-hover:scale-[1.03] transition duration-200">
+      <div class="absolute top-3 left-3 text-[10px] px-2 py-1 rounded-full bg-[var(--pri)] text-white">HOT</div>
+    </div>
+    <div class="p-4 space-y-1">
+      <div class="text-xs text-slate-300/80">{{ p.brand }}</div>
+      <a href="{{ url_for('shop.product_detail', pid=p.id) }}" class="block font-semibold leading-tight hover:text-[var(--sec)]">{{ p.name }}</a>
+      <div class="text-xs text-slate-300/70">{{ p.category }} • {{ p.type }}</div>
+      <div class="mt-3 flex gap-2">
+        <a href="{{ url_for('shop.product_detail', pid=p.id) }}" class="px-3 py-2 rounded-xl border border-[var(--soft)] hover:border-[var(--sec)]">Detail</a>
+        <form method="post" action="{{ url_for('shop.cart_add', pid=p.id) }}">
+          <input type="hidden" name="qty" value="1">
+          <button class="px-3 py-2 rounded-xl bg-[var(--sec)] text-black font-semibold hover:opacity-90">Tambah</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}<div class="text-slate-300/80 mt-4">Tidak ada produk.</div>{% endif %}

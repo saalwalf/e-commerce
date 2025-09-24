@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Home – Velora{% endblock %}
+{% block content %}
+<section class="rounded-3xl overflow-hidden border border-[var(--soft)] bg-[var(--card)] shadow-xl">
+  <div class="grid md:grid-cols-2">
+    <div class="p-8 md:p-12 flex flex-col justify-center">
+      <h1 class="font-display text-5xl leading-none">Sport Essentials, <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--pri)] via-[var(--hot)] to-[var(--sec)]">Daily</span> Prices.</h1>
+      <p class="mt-3 text-slate-300/90">Pilihan aman buat gaya & performa tanpa bikin kantong kaget.</p>
+      <div class="mt-6">
+        <a href="{{ url_for('shop.products_list') }}" class="px-5 py-3 rounded-xl bg-[var(--pri)] hover:opacity-90">Lihat Produk</a>
+      </div>
+    </div>
+    <img src="https://picsum.photos/seed/velora-hero/1600/1200" class="w-full h-full object-cover" alt="Hero">
+  </div>
+</section>
+
+<!-- Brands strip -->
+<section class="mt-6 rounded-2xl border border-[var(--soft)] bg-[var(--card)] p-4">
+  <div class="flex items-center justify-between">
+    <div class="font-display text-xl">Brands</div>
+    <a class="text-sm hover:text-[var(--sec)]" href="{{ url_for('shop.products_list') }}">See All Brands →</a>
+  </div>
+  <div class="mt-3 overflow-x-auto" style="-webkit-overflow-scrolling:touch;">
+    <div class="flex gap-3 min-w-max pr-2">
+      {% for b in distinct('brand') %}
+      <a href="{{ url_for('shop.products_list') }}?brand={{ b }}" class="shrink-0 px-4 py-3 rounded-2xl border border-[var(--soft)] bg-[var(--bg)]/30 hover:border-[var(--sec)] font-semibold tracking-wide">{{ b }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="mt-8">
+  <div class="flex items-center justify-between">
+    <h2 class="font-display text-3xl">Trending</h2>
+    <a class="text-sm hover:text-[var(--sec)]" href="{{ url_for('shop.products_list') }}">Lihat semua →</a>
+  </div>
+  {% set items = items %}
+  {% include 'products/_grid.html' with context %}
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Velora – Neon Sports{% endblock %}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{ --bg:#0b1021; --card:#121938; --soft:#1a2250; --txt:#e6ecff; --pri:#7c3aed; --sec:#06b6d4; --hot:#f43f5e; }
+    .font-display{font-family:'Space Grotesk',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .font-sans{font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  </style>
+</head>
+<body class="font-sans text-[var(--txt)] bg-[var(--bg)]">
+  <div class="fixed inset-0 -z-10 pointer-events-none" aria-hidden="true">
+    <div class="absolute -top-24 -left-24 w-96 h-96 rounded-full blur-3xl opacity-30" style="background: radial-gradient(closest-side,var(--pri),transparent)"></div>
+    <div class="absolute -bottom-24 -right-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-30" style="background: radial-gradient(closest-side,var(--sec),transparent)"></div>
+  </div>
+  {% include 'partials/_navbar.html' %}
+  <main class="container mx-auto px-4 py-6">{% block content %}{% endblock %}</main>
+  {% include 'partials/_footer.html' %}
+</body>
+</html>

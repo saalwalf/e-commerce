@@ -1,0 +1,10 @@
+
+<footer class="mt-12 border-t border-[var(--soft)]">
+  <div class="container mx-auto px-4 py-10 grid md:grid-cols-4 gap-6 text-sm">
+    <div><div class="font-display text-2xl">VELORA</div><p class="mt-2 text-slate-300/80">Neon sports & lifestyle.</p></div>
+    <div><div class="font-semibold mb-2">Halaman</div><ul class="space-y-1 text-slate-300/80"><li><a href="{{ url_for('shop.index') }}">Home</a></li><li><a href="{{ url_for('shop.products_list') }}">Produk</a></li><li><a href="{{ url_for('shop.cart_page') }}">Cart</a></li><li><a href="{{ url_for('shop.checkout') }}">Checkout</a></li></ul></div>
+    <div><div class="font-semibold mb-2">Kategori</div><ul class="space-y-1 text-slate-300/80"><li>Footwear</li><li>Clothing</li><li>Accessories</li></ul></div>
+    <div><div class="font-semibold mb-2">Newsletter</div><form class="flex gap-2"><input class="flex-1 px-3 py-2 rounded bg-[var(--card)] border border-[var(--soft)]" placeholder="Email kamu"><button class="px-4 py-2 rounded bg-[var(--sec)] text-black font-semibold">Daftar</button></form></div>
+  </div>
+  <div class="text-slate-400 text-xs py-4 text-center">© 2025 Velora Neon Demo.</div>
+</footer>

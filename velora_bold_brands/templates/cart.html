@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% block title %}Keranjang – Velora{% endblock %}
+{% block content %}
+<h2 class="font-display text-3xl mb-4">Keranjang</h2>
+{% if items %}
+<form method="post" action="{{ url_for('shop.cart_update') }}">
+  <div class="rounded-2xl border border-[var(--soft)] bg-[var(--card)] overflow-hidden">
+    {% for it in items %}
+    <div class="p-4 flex items-center gap-4 border-b border-[var(--soft)] last:border-b-0">
+      <img src="{{ it.product.image_url }}" class="h-20 w-28 object-cover rounded-xl border border-[var(--soft)]" alt="{{ it.product.name }}">
+      <div class="flex-1">
+        <div class="font-semibold">{{ it.product.name }}</div>
+        <div class="text-sm text-slate-300/80">{{ it.product.brand }} • {{ it.product.category }} • {{ it.product.type }}</div>
+      </div>
+      <input class="w-24 px-3 py-2 rounded-xl border border-[var(--soft)] bg-[var(--card)] text-[var(--txt)]" type="number" name="qty_{{ it.product.id }}" min="0" value="{{ it.qty }}">
+    </div>
+    {% endfor %}
+  </div>
+  <div class="mt-4 flex items-center justify-between">
+    <div class="text-slate-300/90">Jumlah item: <strong>{{ items|length }}</strong></div>
+    <div class="flex gap-2">
+      <button class="px-4 py-2 rounded-xl border border-[var(--soft)]" formaction="{{ url_for('shop.cart_clear') }}" formmethod="post">Kosongkan</button>
+      <button class="px-4 py-2 rounded-xl bg-[var(--pri)] hover:opacity-90" type="submit">Perbarui</button>
+      <a href="{{ url_for('shop.checkout') }}" class="px-4 py-2 rounded-xl bg-[var(--sec)] text-black font-semibold">Checkout</a>
+    </div>
+  </div>
+</form>
+{% else %}<div class="text-slate-300/80">Keranjang kosong.</div>{% endif %}
+{% endblock %}
+t
