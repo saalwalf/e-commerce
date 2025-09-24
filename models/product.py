@@ -4,7 +4,7 @@ class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)  # auto-increment by default
     name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.String(500))
+    description = db.Column(db.String(10000))
     image_url = db.Column(db.String(255))
     brand = db.Column(db.String(100))
     category = db.Column(db.String(100))  # footwear, clothing, accessories
