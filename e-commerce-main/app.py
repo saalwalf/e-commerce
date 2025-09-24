@@ -1,7 +1,7 @@
 # app1.py
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session, jsonify, Flask
 from models import db, Product, ProductDetails, User, Cart, CartItem, Order, OrderItem
-import config
+from config import Config
 
 shop_bp = Blueprint(
     "shop",
@@ -11,7 +11,8 @@ shop_bp = Blueprint(
 )
 
 app = Flask(__name__)
-app.config.from_object(config)
+app.config.from_object(Config)
+app.secret_key = Config.SECRET_KEY
 db.init_app(app)
 
 def get_products_with_details():

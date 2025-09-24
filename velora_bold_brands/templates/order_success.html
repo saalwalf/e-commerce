@@ -7,7 +7,7 @@
   <p class="mb-4 text-slate-300/90">Rincian pesanan #{{ order.id }} tercatat.</p>
   <div class="grid md:grid-cols-2 gap-6 text-sm">
     <div><h3 class="font-semibold mb-2">Alamat</h3><div class="whitespace-pre-line">{{ order.address }}</div>{% if order.note %}<div class="mt-2"><span class="font-semibold">Catatan:</span> {{ order.note }}</div>{% endif %}</div>
-    <div><h3 class="font-semibold mb-2">Item</h3><ul class="space-y-1">{% for it in order.items %}<li class="flex justify-between"><span>{{ it.product.name }}</span><span>× {{ it.qty }}</span></li>{% endfor %}</ul></div>
+    <div><h3 class="font-semibold mb-2">Item</h3><ul class="space-y-1">{% for it in order["items"] %}<li class="flex justify-between"><span>{{ it.product.name }}</span><span>× {{ it.qty }}</span></li>{% endfor %}</ul></div>
   </div>
   <div class="mt-6 flex gap-3"><a href="{{ url_for('shop.products_list') }}" class="px-4 py-2 rounded-xl border border-[var(--soft)]">Belanja lagi</a></div>
 </section>
